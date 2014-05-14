@@ -1,0 +1,60 @@
+Domain Name System (DNS)  Notes
+
+DNS - like a phonebook that translates names into IP Addresses
+IP Address - a number that corresponds to a device on the network
+Network - either a local network or the internet
+
+TLD - top level domain (.com)
+domain (website name)
+subdomain (www)
+
+LDH Rule - letters, digits, hyphen
+
+Time to Live - a mechanism that limits the lifespan of lifetime of data in a computer network
+	high - info doesn't need to be queried as much, better for production
+	low - better for development and switching servers
+Propagation - the process of the changes being picked up across the internet
+
+Name Servers
+	master - stores original copies of records
+	slave - gets copies of data to share the load and improve availability. 
+	answer questions to your DNS queries
+	computer gets quickest name server to respond
+	
+Root Servers
+	13 total located throughout the world
+	Hold the root zone file which is the authoritative list of DNS servers for all TLDs
+	Without them there would be no internet
+	
+Records
+	A Record - most common record returned from name servers. Maps host names to IP Addresses
+	* wild card record
+	MX Record 
+		specify how mail should be routed via SMTP
+		specified by fully qualified domain name
+		specified by priority
+		backups hold mail in queue in case the priority server is not available
+	CNAME Record
+		canonical name record
+		used for aliases when creating domain names
+		makes maintenance easier if locations change
+	Fully Qualified Domain Names (FQDN)
+		www.example.com
+	TXT Records
+		text record
+		can be used to verify domain ownership
+		SPF Records help to reduce SPAM
+			sender policy framework
+		DomainKeys Identified Mail (DKIM)
+			method for associating a domain name with an email message thereby allowing a person, role, or organization to claim some responsibility for the message
+	Reverse DNS
+		PTR records used to check if server name is associated with IP Address where connection was initiated from
+		Useful for Forward-confirmed reverse dns, which will ensure that both the PTR and A records match
+	SOA Record
+		start of authority
+		first entry in DNS Zone File
+		update time, when to check, who manages it, retry time, expire time, etc.
+		handled by name server usually
+		
+		
+	

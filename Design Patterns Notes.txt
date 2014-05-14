@@ -1,0 +1,56 @@
+Design Patterns
+
+Strategy
+	Defines a family of algorithms, encapsulates each one, and makes them interchangeable. Lets the algorithm vary independently from clients that use it
+	Works well with Spring Framework
+	The Duck example in Head First Design Patterns
+	Encapsulate what varies
+	Favor composition over inheritance
+	Program to interfaces, not implementations
+	When inheritance doesn't quite make sense, instead use an interface that child classes can implement for using the methods that don't make sense
+	
+Immutable
+	Locking down a piece of data
+	Creating an immutable object instance that cannot be changed by any code
+	Good for defensive programming
+	Make the class final
+	Make all fields final and private
+	If instance fields include references to mutable objects, don't allow those objects to be changed
+		Create a new one inside the object
+	No setters, private class variable, must instantiate through constructor
+	Enums are mutable out of the box, and can be made immutable
+	Used in POJOs
+	
+Observer
+	Defines a many-to-one dependency between objects so that when one object changes state, all of its dependents are notified and updated automatically
+	Like a subscription to a newspaper/magazine
+		publisher = subject
+		subscribers = observers
+	When data in subject changes, observers are notified
+	Subject interface
+	    concrete subject(s) implement it
+		has-a observer interface
+	Observer interface
+		concrete observer(s) implement it
+	Concrete observers
+		register with a concrete subject	
+	Subjects and observers are loosely coupled
+	The only thing the subject knows about an observer is that it implements a certain interface (the Observer interface)
+	Can add new observers at any time
+	Never need to modify the subject to add new types of observers
+	Changes to an observer or subject will not affect the other
+	In Java:
+		Extend the Observable class
+		Can be helpful, but also has pitfalls. Can only extend Observable, can't implement as an interface
+	It is good to be able to make your own implementation
+	Examples in the JDK
+		Observer/Observable
+		Swing JButton
+		JavaBeans PropertyChangeListener
+	Strive for loosely coupled designs between objects that interact
+	
+		
+	
+	
+	
+	

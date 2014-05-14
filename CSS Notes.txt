@@ -1,0 +1,623 @@
+CSS Notes
+
+Cascade defines order in which styles are applied
+Importance, Specificity, Source Order
+User Agent Style Sheet (browser)
+User Style Sheet (user's special styles)
+Author style Sheet (defined by programmer)
+In general the one that appears later will override
+inline:
+	<body style="background-color: #BDD4DE;">
+	override all styles
+	considered bad practice in most cases
+	makes maintenance difficult and impractical
+internal:
+	<head>
+		<style type="text/css">
+			h1
+			{
+				color: white;
+				background-color: #E14607;
+			}
+		</style>
+	</head>
+	only works for one page
+	has to be loaded by the browser each time
+external:
+	best practice
+	gives flexibility and easier maintainability
+	saves on download time
+	make css file and include in html pages that need it
+	
+	<link rel="stylesheet" href="css/style.css">
+	
+	<style type="text/css">
+		@import 'css/more-styles.css';
+	</style>
+	
+	@import can be used from within a css file, but must be at the top
+	@import can make css more modular by linking to different files
+	the drawback to @import is performance
+	
+Selectors
+	universal selector
+		* selects all elements on the page and has #1 priority. Lose the power of inheritance
+	type selector
+		use element html tags like h1, p, body
+	descendant selector
+		access nested elements like <h1>My <span>Title</span></h1>
+		combine selectors
+		example: h1 span {}
+
+Class Selector
+	targets an element based on its class attribute like <div class="container"></div>
+	css: .container {}
+	can be reused throughout a page
+	elements can have more than one class
+	can be used in combination with descendant selectors
+
+ID Selector
+	unique to the page, an element can only have one ID and a page can only have one element with the same ID name
+	in html: <div id="main"></div>
+	in css: #main {}
+	can be used in combination with descendant selectors
+	both an id and class can be applied to an element, but id has more influence
+	ids have browser functionality
+	ids can be used as links within a page
+	
+Group Selectors
+	dry: don't repeat yourself
+	group repeated css properties together instead of having them in more than one place
+	example:
+	
+	.square,
+	.circle,
+	.ellipse
+	{
+		common code to all
+	}
+	
+	.circle,
+	.ellipse
+	{
+		common to circles and ellipses
+	}
+	
+	.ellipse
+	{
+		only for ellipses
+	}
+	
+	better example:
+	.base
+	{
+		common code to all
+	}
+	
+	.radius
+	{
+		common to circles and ellipses
+	}
+	
+	.ellipse
+	{
+		only for ellipses
+	}
+
+Combinators
+	child selectors
+		not the same as descendant selectors, targets only direct children and not elements nested inside of other elements
+		.main > a
+		{
+			color: red;
+		}
+	adjacent sibling selectors
+		in example: targets paragraphs immediately following an h2
+		h2 + p
+		{
+			color: white;
+			padding: 10px
+			background: royalblue;
+		}
+	general sibling selectors
+		targets every sibling p that follows and h2
+		h2 ~ p
+		{
+			color: white;
+			padding: 10px
+			background: royalblue;
+		}
+	
+	
+Attribute Selectors
+	example: targets attribute no matter its value
+	[class]
+	{
+		background-color: crimson;
+		color: white;
+		padding: 5px;
+	}
+	
+	example: anchor tags with class attributes
+	a[class]
+	{
+		background-color: crimson;
+		color: white;
+		padding: 5px;
+	}
+		
+	example: anchor tags with a specific class attribute
+	a[class="foo"]
+	{
+		background-color: crimson;
+		color: white;
+		padding: 5px;
+	}
+	
+	can be used to target input types in forms
+	same level as class selectors
+	input[type="text"]
+	{
+		properties go here
+	}
+	
+Pseudo-Classes
+	can be applied to more than just anchor tags
+	a:link
+	{
+		color: red;
+	}
+	style links that have not been visited
+	
+	a:visited
+	{
+		color: green;
+	}
+	style links that have been visited
+	
+	a:hover
+	{
+		color: blue;
+	}
+	style links that are being hovered over by the mouse
+	
+	a:active
+	{
+		
+	}
+	when button is pressed or link clicked
+	
+	:root
+		selects element that is the root of the document (typically <html>)
+		has more specificity than the html type selector
+		:root
+		{
+			background-color: lightblue;
+		}
+	:target
+		targets elements based on the url
+		if id of link matches an element, style will be applied to that element
+		:target
+		{
+			color: white;
+			background-color: tomato;
+		}
+	:empty
+		target elements with no child elements or content whatsoever
+		good use- when a result field returns empty with no content
+		:empty
+		{
+			background-color: tomato;
+		}
+	:not()
+		selects everything except specified element
+		targets all divs that aren't empty
+		div:not(:empty)
+		{
+		}
+		targets all divs not the id of s1
+		div:not([id="s1"])
+		{
+		}
+	
+Structural Pseudo-Classes
+	an example is with <li> in <ul>
+	need to add an element in the css if you want to be specific
+	:first-child
+		set properties for first child element of the parent element
+	:last-child
+		set properties for last child element of the parent element
+	:only-child
+		set properties if element is the only child of its parent
+	:nth-child()
+		li:nth-child(odd)
+		{
+			color: white;
+			background-color: black;
+		}
+		li:nth-child(even)
+		{
+			color: red;
+			background-color: blue;
+		}
+		li:nth-child(3)
+		{
+			color: blue;
+			background-color: red;
+		}
+		li:nth-child(an+b)  //b is the offset (first), and a is the interval that will be chosen from that point on
+		{
+			color: blue;
+			background-color: red;
+		}
+		li:nth-child(-n+5)  //Goes backward and will get first 5 elements
+		{
+			color: blue;
+			background-color: red;
+		}
+	:nth-last-child()
+		works like nth-child, but starts counting from last child
+	:nth-of-type()
+		targets element based on position within parent element if it is a specific element
+		example: every nth div inside a parent element
+		div:nth-of-type(2)
+		{
+			background-color: steelblue;
+		}
+	:nth-last-of-type()
+		works like nth-of-type, but starts counting from last child	
+	:only-of-type()
+		styles if element is the only one if its type in the parent 
+		
+UI Element States Pseudo-Classes
+	used in forms
+	:enabled
+		selects UI elements in an enabled state (not greyed out, disabled)
+		input[type="text"]:enabled
+		{
+			background: lightyellow;
+		}
+	:disabled
+		selects UI elements in a disabled state
+		:disabled
+		{
+			background: #ddd; (light grey)
+		}
+	:checked
+		styles elements that are in a checked state
+		input[type="radio"]:checked + label
+		{
+			font-size: 22px;
+			font-weight: bold;
+		}
+		
+Substring Matching Attribute Selectors
+	Begins with Selector – [att^="val"]
+		carrot
+		example: change color of links that start with "http://" (external links)
+		a[href^="http://"]
+		{
+			color: blue;
+		}
+		example: change email link properties
+		a[href^="mailto:"]
+		{
+			color: white;
+			background-color: red;
+		}
+	Ends with Selector – [att$="val"]
+		dollar sign
+		example: change properties of links to .pdf files (the end of the string)
+		a[href$=".pdf"]
+		{
+			background: url('..images/pdf.png') no-repeat 0 2px;
+			padding-left: 25px
+		}
+		example: change properties of links to .doc files
+		a[href$=".doc"]
+		{
+			background: url('..images/doc.png') no-repeat 0 2px;
+			padding-left: 25px
+		}
+	Contains Selector – [att*="val"]
+		asterisk
+		example: change properties of thumbnail images ("thumbnail" embedded within string of url)
+		img[src*="thumbnail"]
+		{
+			border: 5px solid;
+		}
+
+Pseudo-Elements
+	can target virtual elements not defined in markup and don't appear in source code
+	::first-line
+		class is intro, style will be applied to first line rendered by the browser
+		.intro::first-line
+		{
+			color: royalblue;
+			font-weight: bold;
+			font-size: 32px;
+		}
+	::first-letter
+		class is intro, style will be applied to first character 
+		can be used to style a "drop cap" letter like you see in a newspaper
+		.intro::first-letter
+		{
+			float: left;
+			margin: 10px 10px;
+			padding: 5px 10px;
+			background: #e0e0e0;
+			font-size: 100px;
+			line-height: 1;
+		}
+	::before
+		generated content, inserted before selected element
+		must use the content property
+		.phone::before
+		{
+			content: "\2706";
+		}
+	::after
+		generated content, inserted after selected element
+		must use the content property
+		.dload::after
+		{
+			content: url(../img/pdf.png);
+			margin: 0 8px;
+		}
+		examples: can display an elements attributes as generated content
+		.dload::after
+		{
+			content: attr(href);
+			padding-left: 10px;
+			font-size: .75em;
+			color: tomato;
+		}
+		.dload::after
+		{
+			content: attr(title);
+			padding-left: 10px;
+			font-size: .75em;
+			color: tomato;
+		}
+		example: will create the shape of a circle 
+		<div class="box">Generated Shapes</div>
+		.box::before, .box::after
+		{
+			content: "";
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			background: royalblue;
+			border-radius: 50%;
+			margin: 15px 15px 0 15px;
+		}
+
+Values & Units
+	Absolute
+		cm
+		mm
+		in
+		pc - picas
+		pt - points
+		px - pixels, only absolute unit worth using, used often for layout, reference pixel
+	Relative
+		more suitable for on screen design
+		ex - current font's "x" height
+		em - the font-size property of the element on which it's used, one em is equal to the inherited font size, popular, compounds in nested elements
+		rem - root em, always represents root element of page, usually <html> element, avoids compounding effect
+	Viewport-Relative
+		div
+		{
+			width: 15vw;  //15% of viewport width
+			height: 15vh;  //15% of viewport height
+			height: 80vmin; //80% of minimum viewport value
+		}
+		currently have limited browser support
+		
+Numeric and Textual Data Types
+	auto - browser automatically calculates the values
+	inherit - make the value of a property the same as its parent element
+	initial - the value property would have if no styles were applied
+	url('bg.jpg');
+	integers and numbers, including negatives
+	percentages
+
+Color Values
+	keywords: red, green, blue, etc.
+		http://www.w3.org/TR/css3-color/#svg-color
+	hexadecimal
+		#ff0000
+		rgb(65, 105, 255)
+		rgba(65, 105, 255, .9) for opacity
+		hsl(240, 70%, 55%) for hue, saturation, and lightness
+		hsla(240, 70%, 55%, .7) for hue, saturation, and lightness, and alpha channel(opacity)
+		http://colorschemedesigner.com/#
+
+Font Properties
+	serif: finishing stroke/tapering ends (Times, Georgia)
+	sans-serif: plain, no finishing strokes (Verdana, Helvetica)
+	monospace: all characters have the same fixed width (Courier, Lucida Console), often used for code examples
+	Font Stacks
+		prioritized lists of fonts the browser will cycle through
+		font-family
+		using web-safe fonts in font stacks ensures compatibility between browsers and operating systems
+		web-safe fonts: Verdana, Georgia, Times New Roman, Arial, Serif, Sans-serif, Monospace
+	http://www.w3.org/Style/Examples/007/fonts.en.html
+	font-variant: small-caps
+	font:
+		can be used for setting all font properties in one declaration
+		font size and font-family must be specified
+		The font-style, font-variant, and font-weight values, if they're used, they must be defined before the font-size value.
+		Any optional value that is omitted will be set to its initial value and not its inherited value.
+		The font family needs to be the last value defined.
+		
+Text Properties
+	line-height: vertical spacing between lines of text
+		normal, unitless number, number with px, em, percentage 
+		better to use relative values/unitless values
+	text-align: horizontal alignment of text
+		left, right, center, justify
+	text-decoration:
+		none, underline, overline, line-through
+	text-indent:
+		indent first line of text
+	text-transform:
+		uppercase, lowercase, capitalize
+	white-space:
+		normal (ignores multiple spaces/line breaks) , nowrap (single line), pre (as written), pre-line (honors line breaks, but not multiple spaces), pre-wrap
+	text-shadow: create drop shadow for text
+		1px 1px 4px #000;
+		The first number indicates the horizontal offset, or how far to the left or right the shadow should fall.
+		The second value indicates the vertical offset, or distance to the top or bottom.
+		The third is an optional value, which specifies the amount of blur or blur radius applied to the drop shadow.
+		And the fourth value is the color. The color value can be any of the key word values, hex values, also RGBA or HSLA.
+		The first 2 offset values can also be negative numbers
+	overflow:
+		hidden
+	text-overflow:
+		clip, ellipsis
+	word-wrap:
+		break-word
+
+List Styles
+	list-style-type: square, decimal-leading-zero,  none etc.
+	list-style-position: inside, outside
+	list-style-image: url('marker.png'); (use image instead of bullet)
+	list-style: shorthand property, order doesn't matter
+
+CSS Box Model Concept
+	All elements are boxes
+	Basis of CSS layout/positioning
+	Block elements 
+		force new lines
+		block elements form a separate block that takes up the full width available based on the width of the parent element.
+	Inline elements
+		takes up only as much as it needs and does not force any new lines
+	margin, border, padding, content - layers of the box model
+	display - none, block, inline, inline-block
+		change how the elements are displayed
+	visibility- hidden, visible
+	by default a box's width and height are the same as the content it holds, but these can be overridden 
+	width and height define the content area, not the padding & border
+		box-sizing: border-box helps get around this
+	min-width, max-width, min-height, max-height
+	overflow: visible, hidden (truncates), scroll (adds scroll bars), auto (provides scroll bars when they're needed)
+	
+	Floats & Clears
+		Float
+			elements floated on the page
+			remove elements from normal flow of the document
+			left, right, none
+			example: float an image with text wrapping around it
+				img
+				{
+					float: left;
+					margin: 0 25px;
+				}
+			margin doesn't work how you might expect
+			use margin/padding on image itself to get the effect you want
+		Clear
+			left, right, both, none
+			left allows no floating elements on left side
+			best method to clear floats: micro clearfix
+				http://nicolasgallagher.com/micro-clearfix-hack/
+			
+	Positioning Properties
+		position: static, relative, absolute, fixed
+			if position is static, you can't use left, right, top, bottom offset properties, or z-index
+			Absolute is relative to browser view port by default, but can be changed by changing position properties of direct parent element.
+			Fixed is similar to absolute, but will always be relative to the viewport. An example is the twitter header.
+		z-index
+			natural stacking order of elements
+			higher z-indexes are more visible
+			elements positioned absolute, fixed, or relative are the only ones that can have z-indexes
+			similar function to "bring to front" or "send to back" in photoshop like applications
+			cannot apply positioning and float to an element
+
+Backgrounds and Borders
+	Every element has background layer that is transparent by default
+	background-color:  
+		keywords, hex values, rgb, rgba, hsl, hsla
+	background-image:
+		url('')
+		first one listed on top
+		if image cannot be loaded, browser acts like the value is none
+			background-color can be used as a backup
+		repeated horizontally and vertically (tiling) by default
+		http://www.subtlepatterns.com
+	background-repeat:
+		control tiling behavior
+		default value is repeat (both vertically and horizontally)
+		repeat-x, repeat-y, no-repeat
+	background-position:
+		defaults to top left corner
+		first value: position in x-axis, second value: position in y-axis
+		center, left, right, top, bottom
+		80% 50% - 80% left and centered vertically
+	background-attachment
+		scroll is default, moves up/down the page along with everything else
+		fixed keeps image fixed to the viewport so it doesn't move with the page
+		local does not allow a background image to scroll with its containing element, but it will scroll when the element's content scrolls.
+	background: color, image, repeat, attachment, position
+		shorthand property
+	border-radius:
+		can be more specific with border-top-left-radius, border-top-right-radius, border-bottom-right-radius, border-bottom-left-radius
+		define rounded corners
+		radius can be measured in px or percentage(corresponding to dimensions of the element element)
+		first value is horizontal radius, (optional) second value is the vertical radius (ellipses)
+		imagine transposing circles/ellipses over the corners of the element to visualize what the code will do
+		can be used to create different shapes
+	box-shadow:
+		inset, horizontal, vertical, blur radius(optional), spread radius(optional), color(optional)
+		higher blur radius softens the shadow, spread radius modifies the shadow's size
+		color must be placed before or after the length values
+		inset will make an inner shadow, and must be placed first or last
+		can apply multiple box shadows by adding commas (first shadow specified will appear on top, last will appear on bottom)
+	border-image:
+		shorthand
+		kind of tricky
+		divided into 9 image sections like tic-tac-toe grid
+		always define fall back border styles	
+		all properties are heavily reliant on the border width property
+		generator: http://border-image.com/
+		use image as border around an element
+		can modify the image
+		border-image-source
+		border-image-slice
+		border-image-width
+			multiplies the border width if you use number
+			using pixels sets it explicitly
+			horizontal, vertical
+		border-image-outset
+			how far outside box model image should be rendered
+		border-image-repeat
+			stretch
+			repeat
+			round (cleaner repeat)
+			space (similar to round, but little browser support)
+		.box
+		{
+			border: 30px solid green;
+			border-image-source: url('img/border.png')
+			border-image-slice: 25%(width) 20%(height) fill(shows middle image)
+			border-image-repeat
+		}
+	background-clip:
+	background-size:
+		cover, contain
+		
+		
+		
+		
+		
+		
+	
+
+
+
+
+
+
+	
+	
+		

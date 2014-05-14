@@ -1,0 +1,166 @@
+HTML Notes
+
+<img>
+	title attribute in an img tag makes the text appear when you hover over it
+	alt is for search engine optimization and for the visually impaired
+
+
+	
+Make the struture with HTML and then style with CSS. I made the mistake of doing both simultaneously on the church website
+Don't use widths on <span> but do use them on <div> (inline vs block elements)
+
+
+
+<object>
+	(from youtube example)
+	doesn't work the same in every web browser
+	<param> set properties (Internet Explorer)
+	<embed> has better cross-browser support
+	both param and embed are used to support multiple browsers
+	shouldn't be used very often in current times
+
+
+	
+<link>
+	goes in head
+	includes other resources into the page
+	example: <link rel="stylesheet" type="text/css" href="application.css">
+
+
+	
+<script>
+	for including javascript
+	example: <script type="text/javascript" src="javascripts/app.js"></script>
+	can put javascript in between opening and closing tags, but better practice to use external file
+
+	
+	
+<iframe>
+	allows you to open up one page within another page
+	example: <iframe width="300" height="300" src="another_page.html"></iframe>
+
+
+	
+Comments
+	<!-- Comments go in here -->
+
+
+	
+Tables
+	should not be used for page layout, but for tabular data
+	table headers are centered and bolded by default
+	can leave <td> tags empty for empty data in table
+	the <tfoot> creates a footer for the table
+	colspan defines how many columns a piece of data takes up
+	align can be used for positioning data horizontally within a table cell
+	valign can be used for positioning data vertically within a table cell
+	cellpadding will add space within cells
+	cellspacing will add space to the borders between cells
+	example:
+	<table border="1" cellpadding="5" cellspacing="5">
+		<thead>
+			<tr>
+				<th>Fruits</th>
+				<th valign="top">Vegetables</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td colspan="2" align="center">Thanks for reading!</td>
+			</tr>
+		</tfoot>
+		<tr>
+			<td>Oranges</td>
+			<td>Spinach</td>
+		</tr>
+		<tr>
+			<td>Apples</td>
+			<td>Lettuce</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>Potatoes</td>
+		</tr>
+	</table>
+
+
+	
+Forms
+	getting user input
+	action is the webpage you want to load after form has been submitted by user
+	submit goes to URL in action attribute of the form
+	difficult to style with CSS
+	select makes a drop down list
+		optgroup makes grayed out, unselectable titles for sections of the drop down list and indents the options beneath them
+	the <fieldset> element makes a group box around sections of the form, and the <legend> element adds a title to it
+	<label> has "for" attribute associated with an intput type's id
+	example:
+	<form action="URL/page goes here " method="POST" name="my_form">
+		<fieldset>
+		<legend>Important Information</legend>
+			<label for="username">Username:</label>
+			<input type="text" name="username" id="username"><br>
+			<label for="password">Username:</label>
+			<input type="password" name="password"><br>
+			<input type="radio" name="gender" value="Male">Male<br>
+			<input type="radio" name="gender" value="Female">Female<br>
+			<input type="checkbox" name="foods" value="Grapes">Grapes<br>
+			<input type="checkbox" name="foods" value="Cherries">Cherries<br>
+			<input type="checkbox" name="foods" value="Apples">Apples<br>
+		</fieldset>
+		
+		<fieldset>
+		<legend align="center">Important Information</legend>
+			<textarea name="essay" rows="10" cols="30"></textarea><br>
+
+			<select>
+				<optgroup label="Americas">
+					<option>North America</option>
+					<option>South America</option>
+				</optgroup>
+				<optgroup label="Eurasia">
+					<option>Europe</option>
+					<option>Africa</option>
+				</optgroup>
+				<option>Asia</option>
+				<option>Australia</option>
+				<option>Antarctica</option>
+			</select>
+		</fieldset>
+
+		
+		<input type="submit"  value="Continue">
+	</form>
+	
+
+	
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	

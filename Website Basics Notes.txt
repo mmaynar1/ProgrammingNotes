@@ -1,0 +1,48 @@
+Website Basics
+
+Validation
+	validator.w3.org
+		makes sure your html code is valid
+	jigsaw.w3.org/css-validator/
+		makes sure your css code is valid
+	helps find & prevent bugs
+	good practice
+	
+Buy  a domain
+	godaddy.com
+	domaintools.com
+		lookup owner of a domain name
+	sedo.com
+		domain name auction site
+	domai.nr/
+		help you pick a domain name
+	mediatemple.net
+		site to buy hosting
+			shared - about $20/month
+			virtual private server - about $50/month
+			dedicated - $750/month
+			
+File Transfer Protocol
+	http://teamtreehouse.com/library/website-basics/website-basics/file-transfer-protocol
+	point domain to server
+		may take several hours
+	upload files to server
+		ftp
+			ftp clients
+				mac - cyberduck.ch
+				windows - filezilla-project.org/
+			connect to server
+			upload files
+			call root file index.html
+			
+Hosted Services
+	tumblr.com
+		can customize with your own html
+		can point to different domain name if you own one
+	squarespace.com
+	virb.com
+	wordpress.com
+		most flexible and complex
+	wordpress.org
+		can download
+	

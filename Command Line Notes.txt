@@ -1,0 +1,212 @@
+Command Line
+
+vast majority of servers run Linux
+Windows is not part of POSIX
+
+ls 
+	list
+ls -l
+	list (long form)
+ls -a
+	list(all)
+ls /etc
+clear
+	put prompt at top of screen
+cd
+	change directory
+pwd
+	print working directory
+	
+	
+drwxrwxrwx
+directory-user-group-public
+size of folders in command line is usually 4096 and has nothing to do with the cumulative size of the contentspwed
+
+linux home directory - home/username
+mac -users/username
+~ means home directory
+
+tab completion			
+bash - shell, programming that is taking the input and handling it
+
+full path: cd /home/treehouse, cd ~/documents
+
+go to home directory cd ~
+go back up a directory cd ..
+. is current directory
+
+less - displays the contents of a file
+cat - prints contents of one or more files to the console
+
+nano , vim, emacs - text editor
+
+mv move file/directories to different directory and can also be used to rename
+
+cp copy is like move but leaves the original in place, need -r for copying directories
+
+rm is for remove, but be careful. Also need -r for removing directories
+
+mkdir is to make a directory
+	mkdir -p makes it possible to create multiple levels of directories
+	
+sudo - perform a command as the super user	
+whoami gets username
+adduser (new name)
+su to switch user	
+exit gets out of switch user
+
+permissions
+	reading
+	writing
+	executing
+
+chmod modifies permissions	
+	user group or other, u, g , o
+	+ - for adding or removing
+	rwx for specific permission
+	file
+	example: chmod o+r hi.txt add a read permission for others on hi.txt
+	can omit characters to add/remove permissions from all users/groups/other
+	
+r 4
+w 2
+x 1
+can set permissions using shorthand octal notation, just add the numbers together for each user, group, and/or other
+	examples: chmod 777 hi.txt makes file completely open
+					chmod 640 hi.txt lets user read & write, group read, and others do nothing
+	
+chown to change owner	
+	need sudo
+	bob:bob to change user and group
+
+!! previously run command
+		useful for adding sudo: sudo !!
+
+processes are instances of programs	
+	top - like task manager in windows
+	ps - show processes status
+		ps aux - view full list of prcoesses
+		ps aux | grep "pattern" can be used to find a process matching a specific pattern
+	
+ctrl+z to pause a job	
+jobs prints list of processes in your current session
+fg is used to go back to a job
++ is the job that will be run by default if you only type fg without a job number
+use & to immediately send a job to the background
+
+killing processes is done by sending signals
+signals
+	TERM ( terminate, ctrl + c )
+	STOP ( ctrl + z ) 
+kill is used to send a (terminate by default) signal to a process
+	kill -TERM 1456 more explicit
+	kill -STOP 1456 is the same as ctrl + z
+	kill -KILL 1456, kill -9 1456  force kill, last resort
+	
+
+Environment Variables
+	HOME - location of home directory
+	PATH - list of locations where programs are stored, colon separated list of directories
+	env prints out all of the environment variables
+	echo $HOME prints /home/treehouse (home directory)
+	ENV_VARIABLE="value goes here" to set environment variables
+		will be contained in the bash it was created in unless you preface it with "export"
+		export will make it visible to child processes
+	add to PATH: export PATH=/home/treehouse/bin:$PATH
+		better: nano .bashrc/.bashprofile and add export in there
+
+		which prints the location of a command
+		
+Find and Grep
+	Find is for file names
+		find directory -name "file to search for"
+	Grep (global regular expression print) is for inside files
+		grep pattern file/list of files
+			-n gives us line numbers
+			-i makes it case insensitive
+			-v shows lines without the pattern
+	man grep is like help
+	
+	
+Pipes and Redirection
+	piping allows you to chain together small programs to do very powerful things
+	change standard input: grep this < hi.txt
+	change standard output: grep this hi.txt > hi_grep.txt  
+		>> appends to file instead of overwriting it
+	2> redirects std err to somewhere else
+		file.txt
+		/dev/null to throw it away
+	command A | command B
+		pipe the output of command A to the input of command B
+		examples: ps aux | grep bash | sort
+						ps aux | grep bash | sort > sorted_bash_procs.txt
+	
+	
+Installing Software
+	use apt package manager (ubuntu linux) is best way
+	tar is like a zip file, commonly used for archives
+		untar is like unzip
+	Building software from source
+		manual way
+		sudo apt-get update - update your computer's catalog of available software
+		sudo apt-get install build-essential - install the tools needed to build software from source code
+		which make -  verify tools were installed
+		curl -O URL - download the file at the URL
+		tar -xvf FILENAME.tar.gz - decompress the tar.gz file to the current directory
+		./configure - run the configure script that comes with the source code. This creates a Makefile
+		make - run the build specified in the Makefile (because we installed build-essential and are working from the proper directory)
+		sudo make install - run the install script from the Makefile. This installs the program
+		Basic steps:
+			1. Download source file
+			2. Untar file
+			3. Run ./configure script
+			4. Run make command
+			5. Run sudo make install
+	Using a package manager/setting up a server
+		sudo apt-get update - update your computer's package catalog
+		sudo apt-cache search PATTERN - search the available packages for a pattern
+		sudo apt-get install PACKAGE - install one or more packages
+		sudo apt-get upgrade - upgrade to latest version of all the packages installed
+		sudo apt-get remove PACKAGE - remove or uninstall package from your computer
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

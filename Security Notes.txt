@@ -1,0 +1,104 @@
+SQL Injection
+	User inputs raw sql and modifies/reads the database
+	Data validation issue
+	DB error messages compound the issue
+	Blind SQL Injection - rely on website loading mannerisms
+	Defenses - parameterized queries like prepared statements and stored procedures
+	
+Cross-Site Scripting (XSS)
+	Malicious user input being redisplayed on the page
+	Usually HTML and JavaScript
+	Requires user interaction
+	Easy to test for, difficult to fix
+	Script runs in user's own browser, targets user through vulnerabilities in your web app
+	Stored XSS, often found on message boards
+	Defenses
+		filtering is dangerous
+			blacklist filter - block certain characters, not a good way to protect against XSS
+			whitelist filter - only allow certain characters (usually things like alphabet and numbers), much stronger than blacklisting, good for fields with strict format guidelines
+		safe re-encoding
+			ESAPI encoder
+			converts malicious code into code that is safe to be displayed on the screen
+			probably the safest option and best practice
+		set your cookies as HTTPOnly to block JavaScript access
+*		
+Session Hijacking
+	Sessions managed by the server are not well protected
+	Session IDs are sent on every request to the server
+	If stolen, session ID can be used by a hacker to impersonate a user
+	Defenses - encryption, session timeouts
+		https encryption
+		
+Parameter Manipulation
+	User inputs values into URL to manipulate how the website behaves in a way that is unintended by developers
+	Defenses
+		Server side validation
+		Session variables - store data within user's current session on server instead of using parameters
+	Use POST over GET
+	
+Cross-Site Request Forgery (XSRF)
+	Actions in your app can be chained into a single request or "click". Hackers can trick users into using their authenticated sessions to perform actions they don't intend to do
+	Hacker has site that has known actions from other site, and tricks the user into clicking on the malicious site while still having having an authenticated session ID
+	Defenses 
+		session timeouts
+		sensitive actions should require an additional one-time use token
+			generate a unique token on each visit to a sensitive form
+			when form is sent back to server, the token must match
+		require re-authentication before a sensitive transaction is a good way to verify the user and their intended actions, but does hurt usability
+
+Insecure Configuration
+	servers, software
+	account management
+	Insufficient hardening of infrastructure, non-standard process
+	Configuration problems - everything set to defaults, general lack of security hardening, unused services enabled
+	Defenses 
+		repeatable hardening processes for servers, build once and create images of them
+		patch management, central patch management system
+		regular audits and updates
+		
+Insecure Storage
+	Storage of sensitive data done in an insecure manner
+	Cryptography
+	Defenses
+		Identifying data sensitivity (passwords, Credit Card information, etc.)
+		Known strong algorithms
+		Hashes for passwords - SHA-256
+		
+Forcible Browsing
+	Caused by incorrect web server configuration
+	Users can access data in an unauthorized manner
+	User guessing the url
+	Defenses
+		Page level authorization - each page checks to see if the user is authorized to have access, usually not enough
+		Programmed authorization - using code and programming to determine a user's authorization, includes coding roles and access policies
+		Both of these techniques should be used in combination
+*
+Clear-text communication
+	Transmission of sensitive data unencrypted can get logged or intercepted
+	session cookies, cookie data, info in urls, form data & hidden values, transactional info can be stolen
+	Defenses
+		Always on SSL (HTTPS)
+		Proper SSL implementation with strong ciphers
+			Minimum of 128-bit ciphers
+			Use SSLv3/TLS
+			Consider removing HTTP access all together
+
+Unchecked Redirects		
+	Lack of validation when using forms or parameters to forward or redirect users
+	Hackers forward users to their sites using your "trusted" name and domain
+	Defenses
+		Server side validation of redirects
+			Restrict the sites that are allowed in the url
+		Don't use parameters
+			Use POST instead of GET
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

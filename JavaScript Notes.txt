@@ -1,0 +1,301 @@
+JavaScript Notes
+
+Variables
+	dynamically typed
+		just need a name and a value
+	always use var
+	can set to just about any expression
+	might need to move scripts to bottom of body in html
+	command + option + J in chrome
+		console.log();
+	example:
+		var myDiv = document.getElementById('myDiv');
+		myDiv.style.background = "black";
+		myDiv.style.color = "white";
+	names 
+		start with letters, underscores, or dollar sign
+		continue with letters, numbers, underscores, or dollar signs
+	when you don't define a variable you've declared its value is undefined
+		undefined is actually a variable, not a set keyword
+		check for this by checking if (typeof mVar === "undefined")
+		if( myVar == null)
+			double equals operator considers null and undefined to be the same
+			triple equals is strict and won't consider them the same
+	scope
+		javascript has function scope
+		wherever you define it
+		can't access variables outside of functions where you define them
+		function within functions work how you would expect - variables are accessible at the level they are declared and lower
+	shadowing
+		function variable with the same name as global variable is a completely different variable (shadowing)
+		can't access the global variable inside the function if you declare one with the same name
+		if you assign to a variable that doesn't exist, Javascript will create a global variable and assign to it
+	hoisting
+		NOT block scope like Java
+		a second declared variable with same name in function will be the exact same variable as the first, even if inside an if/else/while statement
+		if you declare a variable in the middle of a function, it actually gets hoisted to the top of the function and assigned in the middle
+	
+Strings
+	Double/single quotes are largely equivalent, but double quotes should be used when you need an apostrophe, and vice versa when you need quotes. If you need both use backslashes to escape them
+	Can't split literal string onto multiple lines in JS
+	\n creates new lines
+	\t creates a tab character
+	concatenation with + operator
+	methods/properties
+		.length
+		.indexOf("World")
+			if can't find string, return value is -1
+		.charAt(2)
+		.substr(startIndex, length)
+		.toLowerCase()
+			returns new string, doesn't modify the original string
+		.toUpperCase()
+			returns new string, doesn't modify the original string
+	comparisons
+		if(string1 === string2)
+			unlike Java
+			=== strictly equal to
+			== JS will change type of one operand if it will allow it to match the other operand
+			in general, using === reduces errors
+			< > <= >= based on alphabetical order, lowercase letters are greater than their respective uppercase letters (ASCII table based)
+			looks at first character first
+			app < apples
+
+Numbers
+	only 1 type, no ints, floats, doubles, etc.
+	11 is really 11.0
+	Division will always get you floating point numbers, it won't truncate like integer division in Java
+	To avoid rounding errors with money it is often best to represent $10.50 as 1,050 cents for performing operations
+	Can use  1E6 to represent 1000000	
+	012 is 10 because JS interpreted it as octal, bottom line don't be an idiot and use octals or lead numbers with zeros
+		0x is hexadecimal
+	Parsing strings
+		var integerFromString = parseInt("197", 10) = 197
+			a second, optional parameter is the base (usually 10). good to add just in case
+		var k = ("23 people are here") = 23
+		var j = ("There are 23 people here") = NaN
+			operations on NaN will always be NaN, even comparing NaN to others will be false, instead use isNan(j)	
+		var floatFromString = parseFloat("123.456") = 123.456
+	Operators
+		15/10 = 1.5
+		15 % 10 = 5
+		Be explicit in complicated expressions by using parentheses, just like you do in Java
+	Comparisons
+		if(1=="1")
+			true
+		if(1==="1")
+			false
+		if(1 === parseInt("1", 10))   <------------- better option than the first
+			true
+		!=
+		!==
+	Math Object Library
+		rounding, random numbers, square roots, powers, trigonometry
+		var random = Math.random();
+			returns value between 0 and 1
+		Math.round();
+			rounds to the nearest whole number
+		var random = Math.round(Math.random() * 10);
+			gets random number between 0 and 10
+		var w = Math.floor(3.7);
+			gets 3
+		var x = Math.ceil(6.2)
+			gets 7
+		var y = Math.pow(base, exponent)
+		var z = Math.sqrt(number)
+		Math.min(multiple arguments)
+		Math.max(multiple arguments)
+		Math.abs(-1);
+			gets 1
+		Math.PI
+		Math.E
+		Math.LN10
+
+Arrays
+	var x = ['some', 'words', 'here'];
+	x.length
+	var y = [ 'a string', 3, true, 'hello', function(a, b){return a + b}, ['a subarray', 2 , 3] ]
+	var z = [];
+	var a  = new Array(50);
+		length changes dynamically for you, so this may not be necessary very often 
+	Getting & Setting Values
+		use index, zero based
+		out of bounds index returns undefined
+		Can set a new element just by adding it at specified index. If you pick an element far away from the end of the array, the intermediate elements will be undefined
+		Can use length property to add to end of array
+	Methods
+		methods that modify the original array...
+			myArray.push(value);
+				appends value to end of the array
+			myArray.pop();
+				returns the last element and removes it from the array
+			myArray.unshift(value);
+				like push but adds to the beginning of the array
+			myArray.shift();
+				like pop but returns/removes the first element
+			myArray.sort();
+				will sort numbers as though they are strings by default
+				can change the default sorting method by passing a comparator function as an argument
+					myArray.sort( function (a, b) {
+																		return a - b;
+																	});
+						a and b are two different elements from array
+						negative means a should come before b, positive means a should go after b, and 0 means they are equal
+				randomize
+					myArray.sort( function (a, b) {
+																		return Math.random() - .5
+																	});
+			myArray.reverse();
+				reverse the order of the elements
+		safe methods that return new info and don't modify the original array...
+			myArray.concat(arguments)
+				var newArray = array1.concat(array2);
+				var newArray = array1.concat(4, 5, 6, 7, [8, 9, 10]);
+					will take out elements of last array and make them individual elements
+			myArray.slice(start, end)
+				var newArray = myArray.slice(1,4);
+			myArray.join(separator)
+				var words = ["these" , "are", "some", "words"]
+				var result = words.join(','); = these,are,some,words
+				useful for created a comma delimited string
+				performs .toString() on elements
+		Splice
+			most powerful method for manipulating arrays
+			myArray.splice(indexWeWantToOperateOn, howManyAfterWeWantToRemove, whatWeWantInserted(optoinal), additional optional insertion arguments...);
+			
+Functions
+	if you don't pass in an argument it will be undefined
+	typeof can be handy
+	you can pass extra parameters
+	returns undefined (void functions)
+		function sayHello()
+		{
+			console.log("Hello");
+		}
+		function sayHello(name)
+		{
+			console.log("Hello" + name);
+		}
+		function sayHello(name, greeting)
+		{
+			if(typeof greeting === 'undefined')
+			{
+				greeting = 'Hello';
+			}
+			console.log(greeting + " World! " + name);
+		}
+	return a value
+		function sayHello(name, greeting)
+		{
+			if(typeof greeting === 'undefined')
+			{
+				greeting = 'Hello';
+			}
+			console.log(greeting + " World! " + name);
+			return "Done";
+		}
+	Scope
+		local variable shadows global variables of same name 
+		defining a new variable within a function and forgetting the "var" keyword causes it to be defined globally
+	Anonymous Functions
+		 a function created without a name
+		 usually avoid this, except maybe for self executing anonymous functions
+		 example: seen used as callback functions in ajax/spring controller code in DataTrak
+		var myFunction = function ()
+									{
+										console.log("myFunction was called");
+									}
+		myFunction();						
+		var callTwice = function (targetFunction)
+									{
+										targetFunction();
+										targetFunction();
+									}
+		callTwice(myFunction);  <-------------pass the function, myFunction, to callTwice
+		callTwice(myFunction());  <-------------call myFunction, and pass the return value to callTwice. This results in being undefined
+		self executing
+			this is a way of creating local scope in JavaScript
+			used in a lot of JavaScript libraries
+			(function ()
+			{
+				var a, b, c;
+			}) (arg1, arg2)
+	Examples
+		move script to the bottom of html
+		DOM - Document Object Model
+			The interface our code can use to interact w/ the web page
+		jQuery
+			JavaScript code that has been written to take into account all of the differences between browsers and provide useful functions to manipulate the page and provide abstraction
+		
+		var button = document.getElementById('action');
+		var input = document.getElementById('text_field');
+		button.onclick = function () 
+		{
+			console.log( 'clicked'; );
+		}
+		button.addEventListener('click', function()
+															{
+																console.log('clicked');
+																input.setAttribute('value', 'Hello World');
+															});
+		The addEventListener method is better because a button/gui control can have multiple event listeners. However, IE does not currently support it
+	
+Objects
+	var myObject = {
+		key: "value",
+		anotherKey: ["anotherValue", "blah", "hello"],
+		"favorite color": "Green",
+		age: 22
+		
+		greet: function()
+		{
+			console.log("Hello World!" );
+		}
+		
+		};
+		myObject.key
+		myObject["favorite color"]
+		myObject.greet();
+	when you call this within a function not bound to any object it will get the global namespace (usually window)
+		this should only be used within a method
+	Call Method
+		.call("what value should be bound to this", elements)
+	Apply Method
+		.apply(context, array)
+			pass elements as an array
+	
+	Prototypes
+		no classes
+		prototypal inheritance
+		create a constructor function
+		var personPrototype = 
+		{
+			name: 'Anonymous',
+			greet: function(name, mood)
+			{
+				name = name || "You";
+				mood = mood || "good";
+				console.log("Hello, " + name +
+									" I am " + this.name +
+									" and I am in a " + mood + " mood!");
+			},
+			species: 'Homo Sapien'
+		}
+		
+		function Person (name)  <------------------------------ Constructor
+		{
+			this.name = name;
+			return this;
+		}
+		
+		Person.prototype = personPrototype;
+		
+		jim = new Person("Jim");
+		jim.greet();
+	
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,12 @@
+jQuery Notes
+
+JavaScript library
+api.jquery.com
+.ajax used heavily in DataTrak
+Made it easy to cleanly separate JavaScript from mark up in a cross browser compatible way
+Can chain methods together
+$(".warning").hide().show("slow")
+Include in a project:
+	1) can include at bottom of body (best practice, better experience for the user, don't need .ready())
+	2) can put script tag in <head>
+	paste in from website using jQuery with a CDN

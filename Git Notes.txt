@@ -1,0 +1,72 @@
+Git Bash
+
+git init - make directory a repository
+git init NAME - make new repository
+notepad NAME - create file in directory
+git add NAME - to start tracking the file with git
+git commit - commits all added files to the repository as a change
+	can add a message to go with the commit
+	-a flag commits all changes to all tracked files, without it you can add files individually and be more precise with your commits
+	-m flag allows you to specify a commit message directly on the command line instead of in your default editor
+git status - shows the current status of the git repository, including untracked files and uncommitted changes
+git log - shows us a chronological log of all of our commits to the current repository
+git checkout COMMIT_IDENTIFIER - check out a different version of the code from the one you're currently looking at
+git checkout master - checkout master
+git diff COMMIT_IDENTIFIER1 COMMIT_IDENTIFIER2 - compare versions of project
+
+
+Branching
+	master is the default branch in any new repository, usually the version deployed in production
+	when you create a branch it will start with the code from whatever branch you were in at the time, this is why it is often a good idea to switch to master
+
+	git branch BRANCH_NAME - create a new branch named BRANCH_NAME
+	git checkout BRANCH_NAME - switch branches
+	git checkout -b BRANCH_NAME - create a new branch named BRANCH_NAME and switch to that branch
+	git branch - lists all branches and denotes the one you are on with an asterisk
+	git branch -D BRANCH_NAME - deletes a branch (can't be the one you are currently on)
+	
+Merging
+	git merge BRANCH_NAME - merge branch into current branch
+		often done while in master
+	resolving conflicts
+		get conflict on merge
+		edit files manually (shown with conflict markup)
+		add file to staging area
+		git commit
+			git knows we are resolving a merge conflict
+			add any messages we think are needed
+		Merged!
+	
+Working With Remote Repositories
+	Cloning - creating a copy of a repository on your computer
+		Merge different copies of the same repository
+			pushing changes to from local copy to remote 
+			pulling changes from remote to local copy
+	git clone NETWORK_ADDRESS/REMOTE_REPO NAME - clones repository and gives it a NAME
+		sets up NETWORK_ADDRESS/REMOTE_REPO NAME as a remote repository
+	git remote - lists all remote repositories associated with the current repository
+		origin is the one you cloned from
+	git remote add NAME PATH - add a new remote repository to the current repository
+	
+	Push & Pull
+		git push REPOSITORY BRANCH
+			first argument is remote, if not provided chooses origin
+				necessary to explicitly say remote for pushing new branches that do not exist in the origin
+		git pull  REPOSITORY BRANCH
+		
+
+Gitflow is helpful for managing projects that make heavy use of feature branching
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+	
+	
+	
