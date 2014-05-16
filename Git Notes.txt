@@ -4,6 +4,7 @@ git init - make directory a repository
 git init NAME - make new repository
 notepad NAME - create file in directory
 git add NAME - to start tracking the file with git
+	git add -A - add all files in repository to be tracked
 git commit - commits all added files to the repository as a change
 	can add a message to go with the commit
 	-a flag commits all changes to all tracked files, without it you can add files individually and be more precise with your commits
