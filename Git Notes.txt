@@ -53,6 +53,7 @@ Working With Remote Repositories
 		git push REPOSITORY BRANCH
 			first argument is remote, if not provided chooses origin
 				necessary to explicitly say remote for pushing new branches that do not exist in the origin
+				git push -u origin master
 		git pull  REPOSITORY BRANCH
 		
 
