@@ -1,0 +1,4 @@
+Android Notes
+
+Text use sp units
+Other use dp units

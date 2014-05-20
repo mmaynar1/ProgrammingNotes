@@ -1,0 +1,46 @@
+JSP Notes
+
+Are turned into servlets by container (JBoss)
+Once you have deployed a JSP, it only has to be translated and compiled once. After that it is like any other servlet.
+Expression Language (EL) is the new best practice. Unfortunately older applications must still be maintained.
+	syntax: ${application.mail}
+		same as <%= application.getAttribute("mail") %>
+
+Scriplet
+	<% Java Code %>
+Expression
+	<%= Argument sent to println() %>
+	Don't use semi-colons in expressions
+Directive
+	<%@ page import="java.util.*" %>
+		import is just an attribute
+		defines page specific properties
+	<%@ taglib tagdir="blah" %>
+		custom tags
+	<%@ include file="blah.html" %>
+		defines text and code that gets added into the current page at translation time
+		lets you build reusable chunks that can be added to each page without having to duplicate all the code in each JSP (like a navigation bar)
+Declaration
+	<%! Code added to the servlet class outside of the service method (member variables/methods) %>
+Comment
+	<%-- Comment goes here --%>
+	Unlike HTML comments, these will be stripped out of the translated page. Both can be used in JSPs.
+	
+
+Custom tags
+	JSTL - Java Standard Tag Library
+	can be used instead of having scriplets all over the place
+	For loop to make a table of movies
+		<table>
+			<c:forEach var="movie" items="${movieList}" >
+				<tr>
+					<td>${movie}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	<jsp:include page="inputComments.jsp" />
+		can conditionally include certain things on the page
+		one example would be only allowing members to post comments 
+	<c:choose>, <c:when>, <c:otherwise
+		like an if else
+			
