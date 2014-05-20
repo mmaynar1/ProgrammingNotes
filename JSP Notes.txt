@@ -75,6 +75,15 @@ Custom Tags
 		uri in TLD and in the taglib directive must match, but does not have to be the location of the actual tag handler
 		
 		
+WAR file - Web Archive
+	a .jar file with a .war extension
+	snap shot of your web app architecture in a portable, compressed form
+	
+	
+JavaBeans
+	POJOs that are serializable, have a no argument constructor, and allow access to properties using getter and setter methods
+			
+		
 	
 	
 			
