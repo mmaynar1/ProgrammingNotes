@@ -15,6 +15,8 @@ Directive
 	<%@ page import="java.util.*" %>
 		import is just an attribute
 		defines page specific properties
+		isErrorPage="true" to set page to be the error page
+		errorPage set to "yourErrorPage.jsp" to tell page where to forward if it encounters errors. Can also use the <error-page> DD tag to declare error pages for the entire web app
 	<%@ taglib tagdir="blah" %>
 		custom tags
 	<%@ include file="blah.html" %>
@@ -27,7 +29,7 @@ Comment
 	Unlike HTML comments, these will be stripped out of the translated page. Both can be used in JSPs.
 	
 
-Custom tags
+JSP Tags
 	JSTL - Java Standard Tag Library
 	can be used instead of having scriplets all over the place
 	For loop to make a table of movies
@@ -41,6 +43,38 @@ Custom tags
 	<jsp:include page="inputComments.jsp" />
 		can conditionally include certain things on the page
 		one example would be only allowing members to post comments 
+		<jsp:param name="subTitle" value="Blah blah blah" />
+			can use this to customize the included content
 	<c:choose>, <c:when>, <c:otherwise
 		like an if else
+	<c:import url="http://blhablah.html" />
+		Adds content from the url to the current page at request time
+		
+Custom Tags
+	TLD (Tag Library Descriptor)
+		has xml/html like syntax
+		<uri>unique name</uri>
+		<tag>
+			<description>good idea to include</description>
+			<name>tagNameGoesHere</name>
+			<tag-class>called when someone uses the tag in a JSP</tag-class>
+			<attribute>
+				<name>user</name>
+				<required>true</required>
+				<rtexprvalue>true</rtexprvalue> //"user" attribute can be a run time expression value, not just a String literal
+			</attribute>
+		</tag>
+	<%@ taglib prefix="dt" uri="unique name" %>
+	<dt:tagNameGoesHere user="${userName}"/>
+	dt is the prefix we use
+	name comes from the TLD
+	URI is a unique identifier in the TLD for a tag library
+		what you put in your taglib directive
+		tells the container how to identify the TLD file within the web app
+		container then maps the tag name used in the JSP to the Java code that runs when you use the tag
+		uri in TLD and in the taglib directive must match, but does not have to be the location of the actual tag handler
+		
+		
+	
+	
 			
