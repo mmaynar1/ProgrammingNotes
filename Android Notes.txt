@@ -1,4 +1,30 @@
 Android Notes
 
+Developer Guide
+http://developer.android.com/guide/index.html
+
+Android/Java Cheat Sheet
+http://treehouse-cheatsheets.s3.amazonaws.com/android_island1_cheat_sheet.html
+
+Activity Lifecycle
+http://developer.android.com/reference/android/app/Activity.html#ActivityLifecycle
+
+
 Text use sp units
 Other use dp units
+
+Alpha Property
+	how transparent a property is
+	0 is transparent
+	1 is opaque
+	
+Context is the current state of the application
+	very important
+	
+
+SensorManager	
+	Always make sure to disable sensors you don't need, especially when your activity is paused. 
+	Failing to do so can drain the battery in just a few hours. 
+	Note that the system will not disable sensors automatically when the screen turns off.
+	http://developer.android.com/reference/android/hardware/SensorManager.html
+	
