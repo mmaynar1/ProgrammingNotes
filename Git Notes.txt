@@ -34,7 +34,7 @@ Merging
 		edit files manually (shown with conflict markup)
 		add file to staging area
 		git commit
-			git knows we are resolving a merge conflict
+			git knows we are resolving a merge conflictgit 
 			add any messages we think are needed
 		Merged!
 	
@@ -58,9 +58,10 @@ Working With Remote Repositories
 		
 
 Gitflow is helpful for managing projects that make heavy use of feature branching
-				
-				
-				
+	
+
+******TESTING*******	
+
 				
 				
 				
