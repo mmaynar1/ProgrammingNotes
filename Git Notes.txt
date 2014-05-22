@@ -60,8 +60,7 @@ Working With Remote Repositories
 Gitflow is helpful for managing projects that make heavy use of feature branching
 	
 
-******TESTING*******
-SECOND TEST	
+
 
 				
 				
