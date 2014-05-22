@@ -24,7 +24,7 @@ Branching
 	git checkout BRANCH_NAME - switch branches
 	git checkout -b BRANCH_NAME - create a new branch named BRANCH_NAME and switch to that branch
 	git branch - lists all branches and denotes the one you are on with an asterisk
-	git branch -D BRANCH_NAME - deletes a branch (can't be the one you are currently on)
+	git branch -D BRANCH_NAME - deletes a local branch (can't be the one you are currently on)
 	
 Merging
 	git merge BRANCH_NAME - merge branch into current branch
@@ -48,7 +48,10 @@ Working With Remote Repositories
 	git remote - lists all remote repositories associated with the current repository
 		origin is the one you cloned from
 	git remote add NAME PATH - add a new remote repository to the current repository
-	
+	Deleting
+		git push origin :BRANCH_NAME
+			deletes a remote branch
+				
 	Push & Pull
 		git push REPOSITORY BRANCH
 			first argument is remote, if not provided chooses origin
