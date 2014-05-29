@@ -1,6 +1,7 @@
 JSP Notes
 
 Are turned into servlets by container (JBoss)
+Server side technology that accomplishes the same thing as PHP, ASP, or ColdFusion
 Once you have deployed a JSP, it only has to be translated and compiled once. After that it is like any other servlet.
 Expression Language (EL) is the new best practice. Unfortunately older applications must still be maintained.
 	syntax: ${application.mail}
@@ -10,7 +11,13 @@ Scriplet
 	<% Java Code %>
 Expression
 	<%= Argument sent to println() %>
+	Used to insert values directly into the output
 	Don't use semi-colons in expressions
+	Predefined variables
+		request - HttpServletRequest
+		response - HttpServletResponse
+		session - HttpSession associated with the request
+		out - the PrintWriter (a buffered version called JspWriter) used to send output to the client
 Directive
 	<%@ page import="java.util.*" %>
 		import is just an attribute
