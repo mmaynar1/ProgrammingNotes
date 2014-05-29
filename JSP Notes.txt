@@ -9,17 +9,38 @@ Expression Language (EL) is the new best practice. Unfortunately older applicati
 
 Scriplet
 	<% Java Code %>
+	
 Expression
 	<%= Argument sent to println() %>
 	Used to insert values directly into the output
 	Don't use semi-colons in expressions
 	Predefined variables
-		request - HttpServletRequest
-		response - HttpServletResponse
-		session - HttpSession associated with the request
-		out - the PrintWriter (a buffered version called JspWriter) used to send output to the client
+		request 
+			HttpServletRequest
+			gives access to the request parameters, the request type (GET/POST), and the incoming HTTP headers (cookies)
+		response
+			HttpServletResponse
+			can set HTTP status codes and response headers
+		session 
+			HttpSession associated with the request
+			this variable is bound even if there is no incoming session reference (unless turned off via the session attribute of the page directive)
+		out
+			the PrintWriter (a buffered version called JspWriter) used to send output to the client
+			used most often in scriplets, as expressions print to the screen by nature
+		page
+			synonym for "this" in Java
+		pageContext
+			variable that stores the value of the Page-Context object associated with the current page
+			single point of access to many of the page attributes and provides a convenient place to store shared data
+		application
+			ServletContext
+			can store persistent data shared by all servlets
+		config
+			variable storing the ServletConfig object for the page		
+			
 Directive
 	<%@ page import="java.util.*" %>
+		page can be placed anywhere in document
 		import is just an attribute
 		defines page specific properties
 		isErrorPage="true" to set page to be the error page
@@ -27,10 +48,46 @@ Directive
 	<%@ taglib tagdir="blah" %>
 		custom tags
 	<%@ include file="blah.html" %>
+		include should be placed at the point you want the file inserted
 		defines text and code that gets added into the current page at translation time
 		lets you build reusable chunks that can be added to each page without having to duplicate all the code in each JSP (like a navigation bar)
+
+page Attributes
+	import
+		importing java packages
+		separate by commas if importing multiple packages with the same directive
+		only page attribute that can be used more than once in the same document
+		use near the top
+	contentType
+		sets the Content-Type response header
+	isThreadSafe
+		boolean that controls wheather or not the resulting servlet implements the SingleThreadModel
+		true by default
+		false means it implements the SingleThreadModel
+	session
+		boolean that controls whether or not the page participates in HTTP sessions
+		true by default
+		remember: sessions are user-specific, not page-specific
+	buffer
+		specifies the size of the buffer used by the out variable
+	autoflush
+	extends
+		designates the superclass of the servlet that will be generated
+	info
+	errorPage
+		specifies a JSP page that should process any exceptions
+	isErrorPage
+		indicates whether the current page can act as an error page
+	language
+		specifies the programming language being used (useless right now)
+		
+	
+	
+	
 Declaration
 	<%! Code added to the servlet class outside of the service method (member variables/methods) %>
+	don't use declarations to override the standard servlet lifecycle methods (service, doGet, init, etc.)
+	for initialization/cleanup override jspInit/jspDestroy
 Comment
 	<%-- Comment goes here --%>
 	Unlike HTML comments, these will be stripped out of the translated page. Both can be used in JSPs.
