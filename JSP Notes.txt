@@ -80,10 +80,7 @@ page Attributes
 		indicates whether the current page can act as an error page
 	language
 		specifies the programming language being used (useless right now)
-		
-	
-	
-	
+			
 Declaration
 	<%! Code added to the servlet class outside of the service method (member variables/methods) %>
 	don't use declarations to override the standard servlet lifecycle methods (service, doGet, init, etc.)

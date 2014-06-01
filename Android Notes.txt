@@ -28,3 +28,40 @@ SensorManager
 	Note that the system will not disable sensors automatically when the screen turns off.
 	http://developer.android.com/reference/android/hardware/SensorManager.html
 	
+	
+The activity launched when the app is first started will override the app's label with its own
+
+Providing icons at different resolutions ensures that it will look good on all types of screens
+
+File extension for an executable android app: .apk (android application package)
+
+Publish on Google Play
+	1. Sign up for a Publisher Account on Google Play
+	2. Pay a one-time fee of $25
+	3. Fill out a form to add a new app to your account
+	4. Publish the app
+	Need a merchant account if selling
+	Get 70% of profits and Google gets the other 30%
+	Must sign "Private Digital Signature" before release
+		In Eclipse: File-Export-Android-Export Android Application-Next-Next-Create a new keystore (use existing keystore next time)-Browse-workspace-Type name.keystore- type in password for keystore and confirmation-next-alias-password for key
+						pick high number for validity-add other info-destination should be in project directory but not in bin folder
+		Save your keystore somewhere secure as you will need it to publish updates to your app
+	To take screen shots run in eclipse, switch to DDMS perspective, click on camera icon on left
+	
+Publish on the Amazon Appstore
+	$100 annual fee, but waived for the first year
+	They keep 30% and set the price of our app. We can set a recommended price
+	Apps are reviewed, takes 1-2 weeks
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
