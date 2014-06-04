@@ -49,7 +49,12 @@ Observer
 		JavaBeans PropertyChangeListener
 	Strive for loosely coupled designs between objects that interact
 	
-		
+MVC
+	components communicate through clearly defined interfaces
+	components shouldn't know/care about how the others are implemented
+	Model - what to display
+	View - how it's displayed
+	Controller - formatting the model for display and handling events like user input
 	
 	
 	

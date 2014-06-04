@@ -1,0 +1,30 @@
+Graphics Notes
+
+Raster Image
+	Made up of lots of pixels
+	Don't retain appearance as size increases
+	Depend on resolution
+	DPI (dots per inch)
+Vector Image
+	Made up of paths
+	Can't see individual pixels
+	Retains appearance as size increases
+	Must be converted to raster before hitting the web
+	Use whenever possible, and convert for web
+	
+Saving Graphics for the Web
+	Lossless
+		GIF
+			graphics interchange format
+			256 colors
+			supports animation
+			supports transparency
+		PNG
+			portable network graphic
+			supports drop shadow
+			supports transparency
+			large file size
+	Lossy
+		JPEG
+			doesn't support transparency
+	

@@ -53,6 +53,9 @@ Publish on the Amazon Appstore
 	They keep 30% and set the price of our app. We can set a recommended price
 	Apps are reviewed, takes 1-2 weeks
 	
+In MVC pattern
+	Activites are one of the key pieces of the Controller
+	Layouts are one of the key pieces of the View
 	
 	
 	
