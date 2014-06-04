@@ -13,7 +13,8 @@ Vector Image
 	Use whenever possible, and convert for web
 	
 Saving Graphics for the Web
-	Lossless
+	Should generally be set at 72 DPI
+	Lossless Data Compression
 		GIF
 			graphics interchange format
 			256 colors
@@ -24,7 +25,7 @@ Saving Graphics for the Web
 			supports drop shadow
 			supports transparency
 			large file size
-	Lossy
+	Lossy Data Compression
 		JPEG
 			doesn't support transparency
 	
