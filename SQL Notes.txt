@@ -1,0 +1,39 @@
+SQL Notes
+
+
+select<column list>
+from<table>
+where<criteria>
+order by<column list>
+
+
+"nulls last" can be used after order by clause
+removing a comma between columns makes an alias
+optional keyword "as" when making aliases
+can use double quotes to force case/allow spaces on aliases
+use || to concatenate 
+put string literals in single quotes
+table in oracle called "dual"  that has a varchar2(1) of dummy
+count(*) gets the count of rows
+upper() and lower() functions for helping to compare while ignoring case
+
+like 'S%' - compare to pattern (starts with S)
+	% means anything or nothing
+	_ means exactly one of any character
+	Examples:
+		'_o%'  o is in the second position
+		'___' is exactly three characers long
+				
+Don't need tick marks for number data type
+	avoid implicit conversion
+	
+Not equals
+	!=
+	<>
+	
+is null, not = null
+is not null, not != null
+
+between 29 and 34 (inclusive)
+
+in(29,34,51)
