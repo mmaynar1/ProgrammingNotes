@@ -1,0 +1,21 @@
+https://www.educba.com/productivity-tips-for-windows-10/
+
+#Virtual Desktop
+If you are familiar with the Mac OS then you will know what this is about. It’s an Apple favorite to have multiple desktops running together and it is now available in the Windows 10 version too! It is great for organizing and it is amazing how you can get all your work sorted using virtual desktops. To open a virtual desktop, all you have to do is press Windows Key + Tab key, and all your open windows will be displayed on your screen. And if you have A LOT going on in your first screen, you can add a second screen as well. When you open a virtual desktop, you’ll see a ‘+ New desktop’ on the bottom right corner of the screen. Go see for yourself.
+
+#Short Cuts
+Screenshotting a window: You can do this by clicking Alt + prt sc
+Snapping a window: Press Windows button + Left/Right
+Switch to the recent window: Do this by pressing Alt + Tab button.
+Task view: Press Windows button + Tab and the new task view opens up and stays that way.
+Create virtual desktop: Windows button + Crtl + D button should do the trick
+Switch the virtual desktop: You can do this by pressing Windows Button + Ctrl + Left or Right button.
+
+#Play Xbox
+Did you know that now you can play Xbox One games on Windows 10 PC? It is one of the nicest additions I’d say! This game streaming function lets you beam titles from your console to the PC even if it is in another room. You can simply activate it by opening the inbuilt Xbox app on your Windows 10 computer and ensure your console is on. You can connect it using Wi-Fi and click on or tap the Xbox One symbol that should appear on your laptop screen. There might be a slight delay for heavier games but for slow games, it works brilliantly and syncs seamlessly.
+
+#Record video of an application
+No, I am not kidding. You can do this. Windows 10’s new Game DVR function is to be used to record videos of gaming moments that you want to remember, but in reality, you can record videos of any open applications or desktop soft wares. So yay!
+To do this, you can press the Windows key + G. A box will soon appear asking you if you want to open the Game bar. Well, lie, and press Yes, this is a game box and another plethora of options will appear in the same bar. It is simple – all you have to do is click on Record to start recording the video. You can find the recorded videos in the Game DVR of the Xbox’s inbuilt app and also under the user folder Videos followed by Captures. This trick is especially useful if you are into making instructional videos for YouTube and the likes.
+
+
